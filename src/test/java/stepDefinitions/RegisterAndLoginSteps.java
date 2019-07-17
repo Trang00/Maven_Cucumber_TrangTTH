@@ -76,11 +76,9 @@ public class RegisterAndLoginSteps {
 		driver.findElement(By.xpath("//input[@name='btnLogin']")).click();
 	}
 
-	@Then("^Verify Home page displayed with messge \"([^\"]*)\"$")
-	public void verifyHomePageDisplayedWithMessge(String webcomeMes)   {
-	    Assert.assertTrue(driver.findElement(By.xpath("//mearquee[text()=\""+webcomeMes+"\"]")).isDisplayed());
-	  
-	     
+	@Then("^Verify Home page displayed with message \"([^\"]*)\"$")
+	public void verifyHomePageDisplayedWithMessage(String webcomeMes)  {
+		 Assert.assertTrue(driver.findElement(By.xpath("//mearquee[text()=\""+webcomeMes+"\"]")).isDisplayed());
 	}
 	protected int randomValue() {
 		Random random = new Random();
