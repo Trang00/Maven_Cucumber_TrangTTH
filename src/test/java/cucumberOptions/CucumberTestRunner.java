@@ -8,13 +8,13 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		dryRun=true,
+		dryRun=false,
 		features="src/test/java/features",
 		glue="stepDefinitions",
 		monochrome=true,
 		plugin = {"pretty","html:target/site/cucumber-report-default","json:target/site/cucumber.json"},
 		snippets=SnippetType.CAMELCASE,
-		tags= {"@login"})
+		tags= {"@customer"})
 public class CucumberTestRunner {
 
 }

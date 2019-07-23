@@ -16,7 +16,8 @@ Feature: Register and login
     And I input to Username textbox
     And I input to Password textbox
     And I click to Login button at Login page
-    Then Verify Home page displayed with message "Webcome To Manager's Page of Guru99 Bank"
+    Then Verify Home page displayed with message "Welcome To Manager's Page of Guru99 Bank"
+    And I close browser
      
     
     
