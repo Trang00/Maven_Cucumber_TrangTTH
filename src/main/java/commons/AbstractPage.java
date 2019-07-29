@@ -115,7 +115,7 @@ public class AbstractPage {
 		element.sendKeys(value);
 	}
 
-	public void senkeyToElement(WebDriver driver, String value, String locator, String... dynamicValue) {
+	public void senkeyToElement(WebDriver driver, String locator, String value, String... dynamicValue) {
 		locator = String.format(locator, (Object[]) dynamicValue);
 		//highlightElement(driver, locator);
 		WebElement element = driver.findElement(By.xpath(locator));
@@ -680,24 +680,25 @@ public class AbstractPage {
 	}
 
 	public void senkeyDynamicPage(WebDriver driver, String inputName) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_SENKEY, inputName);
-		senkeyToElement(driver, Constansts.CUSTOMER_NAME_SENKEY, AbstractPageUI.DYNAMIC_SENKEY, inputName);
+		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, inputName);
+		senkeyToElement(driver, Constansts.CUSTOMER_NAME_SENKEY, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, inputName);
 	}
 
 
 	
 	// Dynamic bank guru
 	
-	public void inputDynamicText(WebDriver driver,String values, String dynamicValue) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_SENKEY, dynamicValue);
-		senkeyToElement(driver, values, AbstractPageUI.DYNAMIC_SENKEY, dynamicValue);
+	public void inputDynamicTextboxOrTextAreaOrButtonOrChecbox(WebDriver driver,String dynamicValue,String values ) {
+		waitForControlVisible(driver,AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, dynamicValue);
+		senkeyToElement(driver,AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, values , dynamicValue);
 	}
+	
 	public void inputDynamicText1(WebDriver driver,String values, String dynamicValue) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_SENKEY, dynamicValue);
+		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, dynamicValue);
 		if(driver.toString().contains("chrome")) {
-			removeAttributeInDOM(driver, AbstractPageUI.DYNAMIC_SENKEY, "type", values);
+			removeAttributeInDOM(driver, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, "type", values);
 		}
-		senkeyToElement(driver, values, AbstractPageUI.DYNAMIC_SENKEY, dynamicValue);
+		senkeyToElement(driver, values, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, dynamicValue);
 	}
 	public void clickDynamicRadio(WebDriver driver,String value, String dynamicValue) {
 		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_RADIO, dynamicValue);
@@ -712,8 +713,8 @@ public class AbstractPage {
 		sendKeyDynamicboardToElement(driver, Keys.TAB, AbstractPageUI.DYNAMIC_SENKEY_TEXTAREA, dynamicValue);
 	}
 	public void DynamicPressTab(WebDriver driver,String dynamicValue) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_SENKEY, dynamicValue);
-		sendKeyDynamicboardToElement(driver, Keys.TAB, AbstractPageUI.DYNAMIC_SENKEY, dynamicValue);
+		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, dynamicValue);
+		sendKeyDynamicboardToElement(driver, Keys.TAB, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, dynamicValue);
 	}
 	public String getDynamicText(WebDriver driver,String dynamicValue ) {
 		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_TEXT, dynamicValue);

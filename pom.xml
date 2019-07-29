@@ -90,8 +90,8 @@
 			</plugin>
 			<!-- Generate report -->
 			<plugin>
-				<groupId>net .masterthought</groupId>
-				<artifactId>naven-cucumber-reporting</artifactId>
+				<groupId>net.masterthought</groupId>
+				<artifactId>maven-cucumber-reporting</artifactId>
 				<version>3.10.0</version>
 				<executions>
 					<execution>

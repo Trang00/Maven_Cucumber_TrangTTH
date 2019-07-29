@@ -12,8 +12,6 @@ public class LoginPageObject extends AbstractPage{
 		driver=driverMapping;
 	}
 	
-	
-	
 	public String getLoginPageUrl() {
 		return getCurrenUrl(driver);
 	}
@@ -23,6 +21,7 @@ public class LoginPageObject extends AbstractPage{
 		//return new LoginPageObject(driver);
 		return PageFactoryManager.getLoginPage(driver);
 	}
+	
 	public void inputToUserIDTextbox(String userID) {
 		waitForControlVisible(driver, LoginPageUI.USERID_TEXTBOX);
 		senkeyToElement(driver, LoginPageUI.USERID_TEXTBOX, userID);

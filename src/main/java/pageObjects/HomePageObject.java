@@ -19,5 +19,8 @@ public class HomePageObject extends AbstractPage{
 		return isControlUndisplayed(driver, HomePageUI.NO_HOMEPAGE_WELCOME_MESSAGE);
 	}
 	
-	
+	public void openNewCustomerPage() {
+		waitToElementInvisible(driver, HomePageUI.NEWCUSTOMER_PAGE_lINK);
+		clickToElement(driver, HomePageUI.NEWCUSTOMER_PAGE_lINK);
+	}
 }

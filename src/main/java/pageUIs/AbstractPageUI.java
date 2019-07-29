@@ -9,7 +9,7 @@ public class AbstractPageUI {
 	
 	public static final String DYNAMIC_LINK="//a[text()='%s']";
 	
-	public static final String DYNAMIC_SENKEY="//input[@name='%s']";
+	public static final String DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX="(//textarea|//input)[@name='%s']";
 	
 	public static final String DYNAMIC_TEXT="//label[text()='%s']";
 	
