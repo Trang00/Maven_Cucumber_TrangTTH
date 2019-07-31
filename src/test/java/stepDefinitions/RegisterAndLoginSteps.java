@@ -177,7 +177,7 @@ public class RegisterAndLoginSteps {
 		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Address']/following-sibling::td")).getText(),customerT.get(0).get("EditAddress") );
 		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='City']/following-sibling::td")).getText(),customerT.get(0).get("EditCity") );
 		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='State']/following-sibling::td")).getText(),customerT.get(0).get("EditState") );
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Pin']/following-sibling::td")).getText(),customerT.get(0).get("EditPin") );
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Pin']/following-siblin g::td")).getText(),customerT.get(0).get("EditPin") );
 		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Mobile No.']/following-sibling::td")).getText(),customerT.get(0).get("EditPhone") );
 		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Email']/following-sibling::td")).getText(),customerT.get(0).get("Email")+Random+"@hotmail.com");
 	}

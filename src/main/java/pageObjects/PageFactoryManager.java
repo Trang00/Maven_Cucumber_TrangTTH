@@ -58,4 +58,8 @@ public class PageFactoryManager {
 		return new ChangePasswordPageObject(driver);
 	}
 	
+	public static CommonPageObject getCommonPage(WebDriver driver) {
+		return new CommonPageObject(driver);
+	}
+	
 }

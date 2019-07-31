@@ -29,7 +29,7 @@ import pageObjects.HomePageObject;
 import pageObjects.NewAccountPageObject;
 import pageObjects.NewCustomerPageObject;
 import pageObjects.PageFactoryManager;
-import pageUIs.AbstractPageUI;
+import pageUIs.CommonPageUI;
 
 public class AbstractPage {
 
@@ -92,6 +92,15 @@ public class AbstractPage {
 	public void waitForAlertPresence(WebDriver driver) {
 		WebDriverWait wait = new WebDriverWait(driver,  Constansts.LONG_TIMEOUT);
 		wait.until(ExpectedConditions.alertIsPresent());
+	}
+	public boolean isAlertDisplayedWithMessage(WebDriver driver,String expectedText) {
+		String actualText= getTextAlert(driver);
+		acceptAlert(driver);
+		if(actualText.trim().equals(actualText)) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	// WEB ELEMENT
@@ -608,39 +617,39 @@ public class AbstractPage {
 
 	///////
 	public NewCustomerPageObject openNewCustomerPage(WebDriver driver) {
-		waitForControlVisible(driver, AbstractPageUI.NEW_CUSTOMER_LINK);
-		clickToElement(driver, AbstractPageUI.NEW_CUSTOMER_LINK);
+		waitForControlVisible(driver, CommonPageUI.NEW_CUSTOMER_LINK);
+		clickToElement(driver, CommonPageUI.NEW_CUSTOMER_LINK);
 		return PageFactoryManager.getNewCustomerPage(driver);
 	}
 
 	public NewAccountPageObject openNewAccountPage(WebDriver driver) {
-		waitForControlVisible(driver, AbstractPageUI.NEW_ACCOUNT_LINK);
-		clickToElement(driver, AbstractPageUI.NEW_ACCOUNT_LINK);
+		waitForControlVisible(driver, CommonPageUI.NEW_ACCOUNT_LINK);
+		clickToElement(driver, CommonPageUI.NEW_ACCOUNT_LINK);
 		return PageFactoryManager.getNewAccountPage(driver);
 	}
 
 	public DepositPageObject openDepositPage(WebDriver driver) {
-		waitForControlVisible(driver, AbstractPageUI.DEPOSIT_LINK);
-		clickToElement(driver, AbstractPageUI.DEPOSIT_LINK);
+		waitForControlVisible(driver, CommonPageUI.DEPOSIT_LINK);
+		clickToElement(driver, CommonPageUI.DEPOSIT_LINK);
 		return PageFactoryManager.getDepositPage(driver);
 	}
 
 	public FundTransterPageObject openFundTransferPage(WebDriver driver) {
-		waitForControlVisible(driver, AbstractPageUI.FUNDTRANSTER_LINK);
-		clickToElement(driver, AbstractPageUI.FUNDTRANSTER_LINK);
+		waitForControlVisible(driver, CommonPageUI.FUNDTRANSTER_LINK);
+		clickToElement(driver, CommonPageUI.FUNDTRANSTER_LINK);
 		return PageFactoryManager.getFundTransferPage(driver);
 	}
 
 	public HomePageObject openHomePage(WebDriver driver) {
-		waitForControlVisible(driver, AbstractPageUI.HOMEPAGE_LINK);
-		clickToElement(driver, AbstractPageUI.HOMEPAGE_LINK);
+		waitForControlVisible(driver, CommonPageUI.HOMEPAGE_LINK);
+		clickToElement(driver, CommonPageUI.HOMEPAGE_LINK);
 		return PageFactoryManager.openHomePage(driver);
 	}
 
 	////
 	public AbstractPage openDynamicPage(WebDriver driver, String pageName) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
-		clickToElement(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
+		waitForControlVisible(driver, CommonPageUI.DYNAMIC_LINK, pageName);
+		clickToElement(driver, CommonPageUI.DYNAMIC_LINK, pageName);
 		switch (pageName) {
 		case "New Customer":
 			return PageFactoryManager.getNewCustomerPage(driver);
@@ -674,85 +683,21 @@ public class AbstractPage {
 	}
 
 	public void openDynamicMorePage(WebDriver driver, String pageName) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
-		clickToElement(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
+		waitForControlVisible(driver, CommonPageUI.DYNAMIC_LINK, pageName);
+		clickToElement(driver, CommonPageUI.DYNAMIC_LINK, pageName);
 
 	}
 
 	public void senkeyDynamicPage(WebDriver driver, String inputName) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, inputName);
-		senkeyToElement(driver, Constansts.CUSTOMER_NAME_SENKEY, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, inputName);
+		waitForControlVisible(driver, CommonPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, inputName);
+		senkeyToElement(driver, Constansts.CUSTOMER_NAME_SENKEY, CommonPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, inputName);
 	}
 
 
 	
 	// Dynamic bank guru
 	
-	public void inputDynamicTextboxOrTextAreaOrButtonOrChecbox(WebDriver driver,String dynamicValue,String values ) {
-		waitForControlVisible(driver,AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, dynamicValue);
-		senkeyToElement(driver,AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, values , dynamicValue);
-	}
-	
-	public void inputDynamicText1(WebDriver driver,String values, String dynamicValue) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, dynamicValue);
-		if(driver.toString().contains("chrome")) {
-			removeAttributeInDOM(driver, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, "type", values);
-		}
-		senkeyToElement(driver, values, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, dynamicValue);
-	}
-	public void clickDynamicRadio(WebDriver driver,String value, String dynamicValue) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_RADIO, dynamicValue);
-		clickToElement(driver, AbstractPageUI.DYNAMIC_RADIO, dynamicValue);
-	}
-	public void inputDynamicTextArea(WebDriver driver,String value, String dynamicValue) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_SENKEY_TEXTAREA, dynamicValue);
-		senkeyToElement(driver, value, AbstractPageUI.DYNAMIC_SENKEY_TEXTAREA, dynamicValue);
-	}
-	public void DynamicPressTabTextArea(WebDriver driver,String dynamicValue) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_SENKEY_TEXTAREA, dynamicValue);
-		sendKeyDynamicboardToElement(driver, Keys.TAB, AbstractPageUI.DYNAMIC_SENKEY_TEXTAREA, dynamicValue);
-	}
-	public void DynamicPressTab(WebDriver driver,String dynamicValue) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, dynamicValue);
-		sendKeyDynamicboardToElement(driver, Keys.TAB, AbstractPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, dynamicValue);
-	}
-	public String getDynamicText(WebDriver driver,String dynamicValue ) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_TEXT, dynamicValue);
-		return getTextDynamicInElement(driver, AbstractPageUI.DYNAMIC_TEXT, dynamicValue);
-	}
-	public String getDynamicTextDisplayed(WebDriver driver,String dynamicValue ) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_GET_TEXT_DISPLAYED, dynamicValue);
-		return getTextDynamicInElement(driver, AbstractPageUI.DYNAMIC_GET_TEXT_DISPLAYED, dynamicValue);
-	}
-	public void clickDynamicSubmit(WebDriver driver,String dynamicValue) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_SUBMIT, dynamicValue);
-		clickToElement(driver, AbstractPageUI.DYNAMIC_SUBMIT, dynamicValue);
-	}
-	public boolean isDynamicSuccessfullyPageDisplayed(WebDriver driver,String dynamicValue) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_TEXT_DISPLAYED, dynamicValue);
-		return isControlDisplayed(driver,AbstractPageUI.DYNAMIC_TEXT_DISPLAYED, dynamicValue);
-	}
-	public String getDynamicTextH2(WebDriver driver,String dynamicValue ) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_H2_TEXT, dynamicValue);
-		return getTextDynamicInElement(driver, AbstractPageUI.DYNAMIC_H2_TEXT, dynamicValue);
-	}
-	public void inputDynamicDropdown(WebDriver driver,String valueInDropdown,String dynamicValue) {
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_DROPDOWN, dynamicValue);
-		selectItemInHtmlDropdownDynamic(driver, valueInDropdown, AbstractPageUI.DYNAMIC_DROPDOWN, dynamicValue);
-	}
-	public String getLabelDynamicText(WebDriver driver,String dynamicValue ) {
-		waitForControlVisible(driver,AbstractPageUI.DYNAMIC_LABEL_TEXT);
-		return getTextDynamicInElement(driver, AbstractPageUI.DYNAMIC_LABEL_TEXT, dynamicValue);
-	}
-	public void AccepAlertwait(WebDriver driver) {
-		waitForAlertPresence(driver);
-		acceptAlert(driver);
-	}
-	public String getAlert(WebDriver driver) {
-		waitForAlertPresence(driver);
-		return getTextAlert(driver);
-	}
-	
+		
 	
 	
 }

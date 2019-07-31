@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import commons.AbstractPage;
 import commons.Constansts;
-import pageUIs.AbstractPageUI;
+import pageUIs.CommonPageUI;
 import pageUIs.EditCustomerPageUI;
 import pageUIs.HomePageUI;
 import pageUIs.NewCustomerPageUI;
@@ -144,12 +144,12 @@ public class NewCustomerPageObject extends AbstractPage{
 	}
 
 	public String getLabelCustomerDynamicText(WebDriver driver,String dynamicValue ) {
-		waitForControlVisible(driver,AbstractPageUI.DYNAMIC_LABEL_TEXT);
-		return getTextDynamicInElement(driver, AbstractPageUI.DYNAMIC_LABEL_TEXT, dynamicValue);
+		waitForControlVisible(driver,CommonPageUI.DYNAMIC_LABEL_TEXT);
+		return getTextDynamicInElement(driver, CommonPageUI.DYNAMIC_LABEL_TEXT, dynamicValue);
 	}
 	public String getNameDynamicText(WebDriver driver,String dynamicValue ) {
-		waitForControlVisible(driver,AbstractPageUI.DYNAMIC_TEXT);
-		return getTextDynamicInElement(driver, AbstractPageUI.DYNAMIC_TEXT, dynamicValue);
+		waitForControlVisible(driver,CommonPageUI.DYNAMIC_TEXT);
+		return getTextDynamicInElement(driver, CommonPageUI.DYNAMIC_TEXT, dynamicValue);
 	}
 	
 
