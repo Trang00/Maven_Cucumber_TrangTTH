@@ -32,7 +32,6 @@ public class commonSteps extends AbstractTest {
 				dataValue=dataValue+randomNumber();
 			}
 		}
-		dataValue=dataValue+randomNumber();
 		commonPage.inputDynamicTextboxOrTextAreaOrButtonOrChecbox(textboxNameID, dataValue);
 	}
 	@When("^I select \"([^\"]*)\" radio button$")
@@ -53,18 +52,22 @@ public class commonSteps extends AbstractTest {
 	}
 
 	@When("^Verify alert meaasge \"([^\"]*)\" displayed and accept$")
-	public void verifyDynamicAlertMessageDisplayedAndAccept(String dynamciMessage){
-		verifyTrue(commonPage.isDynamicAlertDisplayed(dynamciMessage));
+	public void verifyDynamicAlertMessageDisplayedAndAccept(String dynamicMessage){
+		verifyTrue(commonPage.isDynamicAlertDisplayed(dynamicMessage));
 	}
 	
 	@When("^Wait for some (minutes|seconds) \"([^\"]*)\"$")
-	public void waitForSomeMinuteOrSecond(String timevalue, String timeout){
-		int time=Integer.parseInt(timevalue);
+	public void waitForSomeMinuteOrSecond(String timevalue, String timeUnit){
+		int time=Integer.parseInt(timeUnit);
 		if(timevalue.equals("seconds")) {
 			commonPage.sleepInSecond(time);
 		}else {
 			commonPage.sleepInSecond(time*60);
 		}
+	}
+	@When("^I get text to \"([^\"]*)\" displayed$")
+	public void iGetTextToDynamicDisplayed(String dynamicMessage){
+		commonPage.getDynamicTextDisplayed(dynamicMessage);
 	}
 	
 	

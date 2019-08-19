@@ -23,7 +23,7 @@ Feature: Customer
     |  Name | Gender |  DataOfBirth  |   Address |   City |  State  |  Pin  |  Phone  |  Email  |  Password  |
     | <Name>| m      | <DataOfBirth> | <Address> | <City> | <State> | <Pin> | <Phone> | <Email> | <Password> |
     And I click to Submit button at New Customer page
-    Then Verify message displayed with data
+    Then Verify message displayed with data "Customer Registered Successfully!!!"
     And I verify all above infomation created success
     |  Name | Gender    |  DataOfBirth  |   Address |   City |  State  |  Pin  |  Phone  |  Email  |
     | <Name>| male      | <DataOfBirth> | <Address> | <City> | <State> | <Pin> | <Phone> | <Email> |

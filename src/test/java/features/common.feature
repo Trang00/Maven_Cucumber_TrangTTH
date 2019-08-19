@@ -27,3 +27,6 @@ Feature: Common steps for web elements
    	#Wait some minutes/seconds
    	And Wait for some minutes "dynamic"
    		And Wait for some seconds "dynamic"
+   		
+   #Get text
+   And I get text to "dynamic" displayed

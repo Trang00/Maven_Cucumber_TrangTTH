@@ -22,11 +22,13 @@ public class NewCustomerPageSteps extends AbstractTest{
 	public static String CustomerID;
 	
 	private NewCustomerPageObject newCustomerPage;
+	
 	public NewCustomerPageSteps() {
 		driver=Hooks.openAndQuitBrowser();
 		newCustomerPage=PageFactoryManager.getNewCustomerPage(driver);
 	}
-
+	
+/*
 	@When("^Input to New Customer form with data$")
 	public void inputToNewCustomerFormWithData(DataTable newCustomerTable){
 		List<Map<String, String>> customer=newCustomerTable.asMaps(String.class, String.class);
@@ -62,9 +64,11 @@ public class NewCustomerPageSteps extends AbstractTest{
 		Assert.assertEquals(newCustomerPage.getDynamicTextDisplayed(driver, "Mobile No."),customerT.get(0).get("Phone"));
 		Assert.assertEquals(newCustomerPage.getDynamicTextDisplayed(driver, "Email"),customerT.get(0).get("Email")+email);
 	}
-
+*/
 	@Given("^I get Customer ID at New Customer page$")
 	public void iGetCustomerIDAtNewCustomerPage(){
 		CustomerID=newCustomerPage.getDynamicTextDisplayed(driver, "Customer ID");
+		System.out.println("Get Customer ID: "+NewCustomerPageSteps.CustomerID);
 	}
+	
 }

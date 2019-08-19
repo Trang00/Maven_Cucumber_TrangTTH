@@ -85,10 +85,7 @@ public class RegisterAndLoginSteps {
 	public void verifyHomePageDisplayedWithMessage(String webcomeMes)  {
 		 Assert.assertTrue(driver.findElement(By.xpath("//marquee[text()=\""+webcomeMes+"\"]")).isDisplayed());
 	}
-	@Given("^I open Customer page$")
-	public void iOpenCustomerPage(){
-		driver.findElement(By.xpath("//a[text()='New Customer']")).click();
-	}
+	
 
 	@When("^Input to New Customer form with data$")
 	public void inputToNewCustomerFormWithData(DataTable newCustomerTable){

@@ -99,7 +99,7 @@ public class Hooks {
 		public static void close() {
 			try {
 				if (driver != null) {
-					openAndQuitBrowser().quit();
+					//openAndQuitBrowser().quit();
 					log.info("------------- Closed the browser -------------");
 				}
 			} catch (UnreachableBrowserException e) {

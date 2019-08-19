@@ -697,7 +697,22 @@ public class AbstractPage {
 	
 	// Dynamic bank guru
 	
-		
+	public String getDynamicTextDisplayed(WebDriver driver,String dynamicValue ) {
+		waitForControlVisible(driver, CommonPageUI.DYNAMIC_GET_TEXT_DISPLAYED, dynamicValue);
+		return getTextDynamicInElement(driver, CommonPageUI.DYNAMIC_GET_TEXT_DISPLAYED, dynamicValue);
+	}	
+	public String getDynamicText(WebDriver driver,String dynamicValue ) {
+		waitForControlVisible(driver, CommonPageUI.DYNAMIC_TEXT, dynamicValue);
+		return getTextDynamicInElement(driver, CommonPageUI.DYNAMIC_TEXT, dynamicValue);
+	}
+	public void inputDynamicTextboxOrTextAreaOrButtonOrChecbox(WebDriver driver,String dynamicValue,String values ) {
+		waitForControlVisible(driver,CommonPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, dynamicValue);
+		senkeyToElement(driver,CommonPageUI.DYNAMIC_TEXTBOX_TEXTAREA_BUTTON_CHECKBOX, values , dynamicValue);
+	}
+	public boolean isDynamicSuccessfullyPageDisplayed(WebDriver driver,String dynamicMessage) {
+		waitForControlVisible(driver, CommonPageUI.DYNAMIC_TEXT_DISPLAYED, dynamicMessage);
+		return isControlDisplayed(driver,CommonPageUI.DYNAMIC_TEXT_DISPLAYED, dynamicMessage);
+	}
 	
 	
 }
