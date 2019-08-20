@@ -121,7 +121,7 @@ public class AbstractTest {
 		return driver;
 	}
 
-	protected int randomNumber() {
+	public static int randomNumber() {
 		Random random = new Random();
 		int number = random.nextInt(999);
 		return number;

@@ -16,6 +16,7 @@ import shareContext.TestContext;
 public class RegisterPageSteps extends AbstractTest {
 	WebDriver driver;
 	public static String  userID, password;
+	/*
 	TestContext testContext;
 	
 	private RegisterPageObject registerPage;
@@ -43,6 +44,7 @@ public class RegisterPageSteps extends AbstractTest {
 		String ID=registerPage.getUserIDText();
 		//ShareContextData.USER_ID=registerPage.getUserIDText();
 		testContext.getScenarioContext().setContext(ContextVariable.USER_ID, ID);
+
 	}
 
 	@Then("^I get Password infor$")
@@ -56,7 +58,47 @@ public class RegisterPageSteps extends AbstractTest {
 		//registerPage.openLoginPage(LoginPageSteps.loginPageUrl);
 		registerPage.openLoginPage((String) testContext.getScenarioContext().getContext(ContextVariable.LOGIN_PAGE_URL));
 	}
+*/
 
+	private RegisterPageObject registerPage;
+	
+	public RegisterPageSteps() {
+		driver=Hooks.openAndQuitBrowser();
+		registerPage=PageFactoryManager.getRegisterPage(driver);
+	}
 
+	@Given("^I input to email textbox with data \"([^\"]*)\"$")
+	public void iInputToEmailTextboxWithData(String emailvalue)   {
+		String email=emailvalue+randomNumber()+"@gmail.com";
+		registerPage.inputToEmailIDTextbox(email);
+	}
+
+	@Given("^I click to Submit button at register page$")
+	public void iClickToSubmitButtonAtRegisterPage()   {
+		registerPage.clickToSubmitButton();
+	}
+
+	@Then("^I get UserID infor$")
+	public void iGetUserIDInfor()   {
+		//userID=registerPage.getUserIDText();
+	
+		ShareContextData.USER_ID=registerPage.getUserIDText();
+		
+
+	}
+
+	@Then("^I get Password infor$")
+	public void iGetPasswordInfor()   {
+		//password=registerPage.getPasswordText();
+		ShareContextData.PASSWORD=registerPage.getPasswordText();
+		
+	}
+	@Given("^I open Login page again$")
+	public void iOpenLoginPageAgain()   {
+		//registerPage.openLoginPage(LoginPageSteps.loginPageUrl);
+		registerPage.openLoginPage(ShareContextData.LOGIN_PAGE_URL);
+		
+	
+	}
 	
 }

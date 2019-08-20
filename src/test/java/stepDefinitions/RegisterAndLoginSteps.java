@@ -1,23 +1,22 @@
 package stepDefinitions;
 
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
+import commons.AbstractTest;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 
-public class RegisterAndLoginSteps {
-	WebDriver driver;
+public class RegisterAndLoginSteps extends AbstractTest {
+	/*	WebDriver driver;
 	String loginPageUrl,email, userID, password,CustomerID;
 	int Random=randomValue();
 	
@@ -38,7 +37,7 @@ public class RegisterAndLoginSteps {
 	public void iClickToHereLink()   {
 	     driver.findElement(By.xpath("//a[text()='here']")).click();
 	}
-
+	
 	@Given("^I input to email textbox with data \"([^\"]*)\"$")
 	public void iInputToEmailTextboxWithData(String emailValue)   {
 	     email=emailValue+randomValue()+"@gmail.com";
@@ -80,6 +79,7 @@ public class RegisterAndLoginSteps {
 	public void iClickToLoginButtonAtLoginPage()   {
 		driver.findElement(By.xpath("//input[@name='btnLogin']")).click();
 	}
+	
 
 	@Then("^Verify Home page displayed with message \"([^\"]*)\"$")
 	public void verifyHomePageDisplayedWithMessage(String webcomeMes)  {
@@ -127,6 +127,7 @@ public class RegisterAndLoginSteps {
 	public void iGetCustomerIDAtNewCustomerPage(){
 		CustomerID=driver.findElement(By.xpath("//td[text()='Customer ID']/following-sibling::td")).getText();
 	}
+
 
 	@Given("^I open Edit Customer page$")
 	public void iOpenEditCustomerPage(){
@@ -180,12 +181,12 @@ public class RegisterAndLoginSteps {
 	}
 	@Then("^I close browser$")
 	public void iCloseBrowser() throws Throwable {
-		//driver.close();
+		driver.close();
 	}
 	protected int randomValue() {
 		Random random = new Random();
 		int number = random.nextInt(999);
 		return number;
 	}
-
+*/
 }

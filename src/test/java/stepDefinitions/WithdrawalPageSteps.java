@@ -20,18 +20,7 @@ public class WithdrawalPageSteps extends AbstractPage {
 		depositPage=PageFactoryManager.getDepositPage(driver);
 	}
 
-	@Given("^I input to Account ID textbox in Deposit$")
-	public void iInputToAccountIDTextboxInDeposit(){
-		depositPage.inputDynamicTextboxOrTextAreaOrButtonOrChecbox(driver, "accountno", NewAccountPageSteps.AccountID);
-	}
-	@Given("^Verify message Transaction Successfully displayed success$")
-	public void VerifyMessageTransactionSuccessfullyDisplayedSuccess(){
-		Assert.assertTrue(depositPage.isDynamicSuccessfullyPageDisplayed(driver,"Transaction details of Deposit for Account "+NewAccountPageSteps.AccountID+""));
-	}
-	@Given("^Verify current Amount \"([^\"]*)\"$")
-	public void VerifyCurrentAmount(String CurrentBalance){
-		Assert.assertEquals(depositPage.getDynamicTextDisplayed(driver, "Current Balance"), CurrentBalance);
-	}
+
 	
 	
 }

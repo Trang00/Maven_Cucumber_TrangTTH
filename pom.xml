@@ -94,12 +94,14 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.18.1</version>
 				<configuration>
+			
 					<parallel>classes</parallel>
 					<forkMode>perthread</forkMode>
 					<threadCount>3</threadCount>
 					<includes>
-						<include>**/*TestRunner.java</include>
-						<!-- <include>**/*/CucumberTestRunner.java</include> -->
+						<!--	<include>**/*TestRunner.java</include> -->
+						
+						 <include>**/*/CucumberTestRunner.java</include>
 					</includes>
 				</configuration>
 			</plugin>

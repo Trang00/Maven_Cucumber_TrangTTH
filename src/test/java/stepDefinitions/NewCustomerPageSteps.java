@@ -18,7 +18,7 @@ import pageObjects.PageFactoryManager;
 
 public class NewCustomerPageSteps extends AbstractTest{
 	WebDriver driver;
-	String email=+randomNumber()+"@gmail.com";
+	public static String email="Auto"+randomNumber()+"@gmail.com";
 	public static String CustomerID;
 	
 	private NewCustomerPageObject newCustomerPage;
@@ -28,7 +28,7 @@ public class NewCustomerPageSteps extends AbstractTest{
 		newCustomerPage=PageFactoryManager.getNewCustomerPage(driver);
 	}
 	
-/*
+
 	@When("^Input to New Customer form with data$")
 	public void inputToNewCustomerFormWithData(DataTable newCustomerTable){
 		List<Map<String, String>> customer=newCustomerTable.asMaps(String.class, String.class);
@@ -39,13 +39,14 @@ public class NewCustomerPageSteps extends AbstractTest{
 		newCustomerPage.inputDynamicTextboxOrTextAreaOrButtonOrChecbox(driver, "state", customer.get(0).get("State"));
 		newCustomerPage.inputDynamicTextboxOrTextAreaOrButtonOrChecbox(driver, "pinno", customer.get(0).get("Pin"));
 		newCustomerPage.inputDynamicTextboxOrTextAreaOrButtonOrChecbox(driver, "telephoneno", customer.get(0).get("Phone"));
-		newCustomerPage.inputDynamicTextboxOrTextAreaOrButtonOrChecbox(driver, "emailid", customer.get(0).get("Email")+email);
+		newCustomerPage.inputDynamicTextboxOrTextAreaOrButtonOrChecbox(driver, "emailid", customer.get(0).get("Email")+ShareContextData.EMAIL_ShareContext);
 		newCustomerPage.inputDynamicTextboxOrTextAreaOrButtonOrChecbox(driver, "password", customer.get(0).get("Password"));
 	}
 
 	@When("^I click to Submit button at New Customer page$")
 	public void iClickToSubmitButtonAtNewCustomerPage(){
-		newCustomerPage.clickDynamicSubmit(driver, "sub");
+	//	newCustomerPage.clickDynamicSubmit(driver, "sub");
+		driver.findElement(By.xpath("//input[@name='sub']")).click();
 	}
 
 	@Then("^Verify message displayed with data$")
@@ -62,13 +63,14 @@ public class NewCustomerPageSteps extends AbstractTest{
 		Assert.assertEquals(newCustomerPage.getDynamicTextDisplayed(driver, "State"),customerT.get(0).get("State"));
 		Assert.assertEquals(newCustomerPage.getDynamicTextDisplayed(driver, "Pin"),customerT.get(0).get("Pin"));
 		Assert.assertEquals(newCustomerPage.getDynamicTextDisplayed(driver, "Mobile No."),customerT.get(0).get("Phone"));
-		Assert.assertEquals(newCustomerPage.getDynamicTextDisplayed(driver, "Email"),customerT.get(0).get("Email")+email);
+		Assert.assertEquals(newCustomerPage.getDynamicTextDisplayed(driver, "Email"),customerT.get(0).get("Email")+ShareContextData.EMAIL_ShareContext);
 	}
-*/
+
 	@Given("^I get Customer ID at New Customer page$")
 	public void iGetCustomerIDAtNewCustomerPage(){
-		CustomerID=newCustomerPage.getDynamicTextDisplayed(driver, "Customer ID");
-		System.out.println("Get Customer ID: "+NewCustomerPageSteps.CustomerID);
+		//CustomerID=newCustomerPage.getDynamicTextDisplayed(driver, "Customer ID");
+		//System.out.println("Get Customer ID: "+NewCustomerPageSteps.CustomerID);
+		ShareContextData.CUSTOMER_ID=newCustomerPage.getDynamicTextDisplayed(driver, "Customer ID");
 	}
 	
 }
